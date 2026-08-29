@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.db import connect_to_db, close_db, get_db
 from contextlib import asynccontextmanager
+from app.routers import payments
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -9,6 +10,8 @@ async def lifespan(app: FastAPI):
     close_db()  
 
 app = FastAPI(lifespan=lifespan)
+
+app.include_router(payments.router)
 
 @app.get("/health")
 def health():
