@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
+from pymongo.database import Database
 
 load_dotenv(".env.local")
 
