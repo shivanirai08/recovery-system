@@ -18,6 +18,7 @@ PAYMENT_OUT_FIELDS = (
     "status",
     "razorpay_payment_link_id",
     "payment_link_url",
+    "last_error",
     "created_at",
     "updated_at",
 )

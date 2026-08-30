@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.db import connect_to_db, close_db, get_db
 from contextlib import asynccontextmanager
-from app.routers import payments
+from app.routers import payments, webhooks
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -12,6 +12,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(payments.router)
+app.include_router(webhooks.router)
 
 @app.get("/health")
 def health():

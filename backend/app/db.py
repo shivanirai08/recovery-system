@@ -16,7 +16,8 @@ def connect_to_db():
         raise RuntimeError("MONGO_URL is not set")
     client = MongoClient(url, serverSelectionTimeoutMS=5000)
     client.admin.command("ping")
-    db = client[os.getenv("MONGO_DB","recoverai")]
+    db = client[os.getenv("MONGO_DB", "recoverai")]
+    db["webhook_events"].create_index("event_id", unique=True)
     return client, db
 
 

@@ -34,5 +34,6 @@ class PaymentOut(BaseModel):
     status: PaymentStatus
     razorpay_payment_link_id: Optional[str] = None
     payment_link_url: Optional[str] = None
+    last_error: Optional[str] = None
     created_at: datetime
     updated_at: datetime
